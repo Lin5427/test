@@ -127,7 +127,7 @@ class Calc:
             embed = discord.Embed(color=discord.Colour(0xc5342f))
             embed.description = f'{msg}'
             result = await self.bot.send_message(ctx.message.channel, embed=embed)
-            dan_boru_bako = discord.utils.get(bot.servers, id='329814761661399041')
+            dan_boru_bako = discord.utils.get(self.bot.servers, id='329814761661399041')
             log_chan = discord.utils.get(dan_boru_bako.channels, id='360683898201571331')
             user = ctx.message.author
             em = discord.Embed(title=f'{user.display_name}')
@@ -153,7 +153,7 @@ class Calc:
             embed.add_field(name='exponential', value="`num` ^ `num`")
             embed.add_field(name='integer', value="[`num` + `num` | `num` - `num`] `num` 0 `num`..`num` 9 `num` +")
             result = await self.bot.send_message(ctx.message.channel, embed=embed)
-            dan_boru_bako = discord.utils.get(bot.servers, id='329814761661399041')
+            dan_boru_bako = discord.utils.get(self.bot.servers, id='329814761661399041')
             log_chan = discord.utils.get(dan_boru_bako.channels, id='360683898201571331')
             user = ctx.message.author
             em = discord.Embed(title=f'{user.display_name}')
@@ -171,7 +171,7 @@ class Calc:
         await self.bot.delete_message(crunching)
         # deletes the crunching numbers message
         await self.bot.send_message(ctx.message.channel, embed=embed)
-        dan_boru_bako = discord.utils.get(bot.servers, id='329814761661399041')
+        dan_boru_bako = discord.utils.get(self.bot.servers, id='329814761661399041')
         log_chan = discord.utils.get(dan_boru_bako.channels, id='360683898201571331')
         user = ctx.message.author
         em = discord.Embed(title=f'{user.display_name}')

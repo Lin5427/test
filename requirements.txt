@@ -1,0 +1,13 @@
+discord.py==0.16.11
+aiohttp
+websockets
+chardet
+requests
+PythonGists
+bs4
+lxml
+Pillow
+pyfiglet
+wikipedia
+pyparsing
+urbandict

@@ -1,6 +1,5 @@
 import discord
 import datetime
-import psutil
 import aiohttp
 import asyncio
 import time
@@ -14,7 +13,6 @@ import traceback
 
 from discord.ext import commands
 from contextlib import redirect_stdout
-from ext.formatter import EmbedHelp
 from ext import embedtobox
 
 
@@ -78,13 +76,6 @@ async def on_ready():
     await bot.send_message(log_chan, embed=em)
 
 
-def __init__(self, **attrs):
-    self.formatter = EmbedHelp()
-    self.session = aiohttp.ClientSession(loop=self.loop)
-    self.process = psutil.Process()
-    self.remove_command('help')
-    self.load_extension
-
 @bot.command(pass_context=True)
 async def ping(ctx):
     """Ping-Pong! Check your Internet speed."""
@@ -119,8 +110,7 @@ async def shutdown(ctx):
 async def _set(Type,*,message=None):
     """Change your discord game/stream!"""
     if Type.lower() == 'stream':
-        await bot.change_presence(game=discord.Game(name=message, type=1,
-                                                    url=f'https://www.twitch.tv/{message}'), status='online')
+        await bot.change_presence(game=discord.Game(name=message,type=1,url=f'https://www.twitch.tv/{message}'),status='online')
         await bot.say(f'Set presence to. `Streaming {message}`')
     elif Type.lower() == 'game':
         await bot.change_presence(game=discord.Game(name=message))
@@ -131,6 +121,7 @@ async def _set(Type,*,message=None):
     else:
         await bot.say('Usage: `.presence [game/stream/clear] [message]`')
 
+'''
 async def send_cmd_help(ctx):
     if ctx.invoked_subcommand:
         pages = bot.formatter.format_help_for(ctx, ctx.invoked_subcommand)
@@ -145,30 +136,30 @@ async def send_cmd_help(ctx):
             await bot.send_message(ctx.message.channel, embed=page)
         print('Sent command help')
 
-
 @bot.event
 async def on_command_error(error, ctx):
-    print(error)
-    channel = ctx.message.channel
-    if isinstance(error, commands.MissingRequiredArgument):
-        await send_cmd_help(ctx)
-        print('Sent command help')
-    elif isinstance(error, commands.BadArgument):
-        await send_cmd_help(ctx)
-        print('Sent command help')
-    elif isinstance(error, commands.DisabledCommand):
-        await bot.send_message(channel, "That command is disabled.")
-        print('Command disabled.')
-    elif isinstance(error, commands.CommandInvokeError):
-        no_dms = "Cannot send messages to this user"
-        is_help_cmd = ctx.command.qualified_name == "help"
-        is_forbidden = isinstance(error.original, discord.Forbidden)
-        if is_help_cmd and is_forbidden and error.original.text == no_dms:
-            msg = ("I couldn't send the help message to you in DM. Either"
-                   " you blocked me or you disabled DMs in this server.")
-            await bot.send_message(channel, msg)
-            return
-
+   print(error)
+   channel = ctx.message.channel
+   if isinstance(error, commands.MissingRequiredArgument):
+       await send_cmd_help(ctx)
+       print('Sent command help')
+   elif isinstance(error, commands.BadArgument):
+       await send_cmd_help(ctx)
+       print('Sent command help')
+   elif isinstance(error, commands.DisabledCommand):
+       await bot.send_message(channel, "That command is disabled.")
+       print('Command disabled.')
+   elif isinstance(error, commands.CommandInvokeError):
+       # A bit hacky, couldn't find a better way
+       no_dms = "Cannot send messages to this user"
+       is_help_cmd = ctx.command.qualified_name == "help"
+       is_forbidden = isinstance(error.original, discord.Forbidden)
+       if is_help_cmd and is_forbidden and error.original.text == no_dms:
+           msg = ("I couldn't send the help message to you in DM. Either"
+                  " you blocked me or you disabled DMs in this server.")
+           await bot.send_message(channel, msg)
+           return
+'''
 
 @bot.command(pass_context=True)
 async def coglist(ctx):

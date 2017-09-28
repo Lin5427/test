@@ -356,6 +356,6 @@ for extension in _extensions:
         print(f'Error on load: {extension}\n{exc}')
 
 try:
-    bot.run(TOKEN.strip('\"'), bot=False)
+    bot.run(TOKEN.strip('\"'))
 except Exception as e:
     print(f'\n[ERROR]: \n{e}\n')

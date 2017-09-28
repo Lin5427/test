@@ -11,3 +11,5 @@ pyfiglet
 wikipedia
 pyparsing
 urbandict
+colorthief
+psutil

@@ -1,5 +1,9 @@
 import discord
 import datetime
+import psutil
+import aiohttp
+import asyncio
+import time
 import json
 import inspect
 import os
@@ -11,6 +15,7 @@ import traceback
 from discord.ext import commands
 from contextlib import redirect_stdout
 from ext.formatter import EmbedHelp
+from ext import embedtobox
 
 
 default_data = {
@@ -54,16 +59,16 @@ async def on_ready():
     dan_boru_bako = discord.utils.get(bot.servers, id='329814761661399041')
     log_chan = discord.utils.get(dan_boru_bako.channels, id='360683898201571331')
     print(textwrap.dedent(f"""
-    ------------------------------------------
-    Dummy is Ready
+    +----------------------------------------+
+    Ready for action!
     Author: Lin5427
-    ------------------------------------------
+    +----------------------------------------+
     Username: {bot.user.name}
     User ID: {bot.user.id}
-    ------------------------------------------
+    +----------------------------------------+
     Version Date:「2017年 9月 23日」
     (∩｀-´)⊃━☆ﾟ.*･｡ﾟ
-    ------------------------------------------"""))
+    +----------------------------------------+"""))
     await bot.change_presence(status=discord.Status.online, game=discord.Game(type=0, name='mention help'))
     em = discord.Embed(title="ロボつ is online")
     em.colour = (discord.Colour(0xc5465d))
@@ -72,6 +77,13 @@ async def on_ready():
     em.set_footer(text=f'ETOA {timestamp}')
     await bot.send_message(log_chan, embed=em)
 
+
+def __init__(self, **attrs):
+    self.formatter = EmbedHelp()
+    self.session = aiohttp.ClientSession(loop=self.loop)
+    self.process = psutil.Process()
+    self.remove_command('help')
+    self.load_extension
 
 @bot.command(pass_context=True)
 async def ping(ctx):

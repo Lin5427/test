@@ -41,7 +41,7 @@ async def get_pre(bot):
 
 desc = "Dummy\na(nother) Discord bot written in python\nbut this one by Lin5427"
 bot = commands.Bot(command_prefix=commands.when_mentioned_or('.'), formatter=EmbedHelp(), description=desc)
-bot.remove_command('help')
+# bot.remove_command('help')
 
 
 _extensions = ['cogs.calculator']

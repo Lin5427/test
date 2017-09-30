@@ -66,15 +66,14 @@ async def on_ready():
     User ID: {bot.user.id}
     +------------------///-------------------+
     Version Date:「2017年 9月 23日」
-    Started: {ahora}
-    (∩｀-´)⊃━☆ﾟ.*･｡ﾟ
+    (∩｀-´)⊃━☆ﾟ.*･｡ﾟ {tiempo}
     +------------------///-------------------+"""))
     await bot.change_presence(status=discord.Status.online, game=discord.Game(type=0, name='mention help'))
     em = discord.Embed(title="ロボつ is online")
     em.colour = (discord.Colour(0xc5465d))
-    em.description = f"Something happened and I had to restart,\nworry not, I'm back!\n\nRestarted at: {tiempo}"
+    em.description = f"Something happened and I had to restart,\nworry not, I'm back!"
     em.set_thumbnail(url='https://i.imgur.com/Y5fjdVC.png')
-    em.set_footer(text=f'ETOA: {ahora} | Restart Log')
+    em.set_footer(text=f'Restarted at: {tiempo}')
     await bot.send_message(log_chan, embed=em)
 
 

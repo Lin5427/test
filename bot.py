@@ -53,8 +53,8 @@ _extensions = ['cogs.calculator']
 
 @bot.event
 async def on_ready():
-    bot.uptime = datetime.datetime.now()
-    timestamp = bot.timestamp.now()
+    ahora = datetime.datetime.now()
+    # timestamp = bot.timestamp.now()
     dan_boru_bako = discord.utils.get(bot.servers, id='329814761661399041')
     log_chan = discord.utils.get(dan_boru_bako.channels, id='360683898201571331')
     print(textwrap.dedent(f"""
@@ -66,15 +66,15 @@ async def on_ready():
     User ID: {bot.user.id}
     +------------------///-------------------+
     Version Date:「2017年 9月 23日」
-    Started: {bot.uptime}
+    Started: {ahora}
     (∩｀-´)⊃━☆ﾟ.*･｡ﾟ
     +------------------///-------------------+"""))
     await bot.change_presence(status=discord.Status.online, game=discord.Game(type=0, name='mention help'))
     em = discord.Embed(title="ロボつ is online")
     em.colour = (discord.Colour(0xc5465d))
-    em.description = "Something happened and I had to restart,\nworry not, I'm back!\n\nStarted: {bot.uptime}"
+    em.description = "Something happened and I had to restart,\nworry not, I'm back!\n\nStarted: {ahora}"
     em.set_thumbnail(url='https://i.imgur.com/Y5fjdVC.png')
-    em.set_footer(text=bot.uptime)
+    em.set_footer(text=f'{ahora}')
     await bot.send_message(log_chan, embed=em)
 
 

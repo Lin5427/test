@@ -54,7 +54,7 @@ _extensions = ['cogs.calculator']
 @bot.event
 async def on_ready():
     ahora = datetime.datetime.now()
-    # timestamp = bot.timestamp.now()
+    tiempo = ''.join([str(datetime.datetime.now())[i] for i in range(19)])
     dan_boru_bako = discord.utils.get(bot.servers, id='329814761661399041')
     log_chan = discord.utils.get(dan_boru_bako.channels, id='360683898201571331')
     print(textwrap.dedent(f"""
@@ -72,9 +72,9 @@ async def on_ready():
     await bot.change_presence(status=discord.Status.online, game=discord.Game(type=0, name='mention help'))
     em = discord.Embed(title="ロボつ is online")
     em.colour = (discord.Colour(0xc5465d))
-    em.description = "Something happened and I had to restart,\nworry not, I'm back!\n\nStarted: {ahora}"
+    em.description = f"Something happened and I had to restart,\nworry not, I'm back!\n\nRestarted at: {tiempo}"
     em.set_thumbnail(url='https://i.imgur.com/Y5fjdVC.png')
-    em.set_footer(text=f'{ahora}')
+    em.set_footer(text=f'ETOA: {ahora} | Restart Log')
     await bot.send_message(log_chan, embed=em)
 
 
